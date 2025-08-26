@@ -1,0 +1,252 @@
+/* ====== Base & Theme ====== */
+:root {
+  --bg: #0f1115;
+  --fg: #e6e8ec;
+  --muted: #a0a7b4;
+  --card: #151922;
+  --border: #262b36;
+  --accent: #7c3aed; /* subtle violet accent */
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafbff;
+    --fg: #1d212a;
+    --muted: #596074;
+    --card: #ffffff;
+    --border: #e6e9f0;
+    --shadow: 0 8px 30px rgba(16,24,40,.08);
+  }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; border-radius: calc(var(--radius) - 4px); }
+
+/* ====== Header / Nav ====== */
+header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(120%) blur(10px);
+  background: color-mix(in hsl, var(--bg), transparent 10%);
+  border-bottom: 1px solid var(--border);
+}
+
+header nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+header nav button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
+  cursor: pointer;
+}
+
+header nav button:hover {
+  border-color: color-mix(in hsl, var(--fg), transparent 70%);
+  background: color-mix(in hsl, var(--card), transparent 50%);
+}
+
+header nav button:active { transform: translateY(1px) scale(.99); }
+
+header nav button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in hsl, var(--accent), white 70%);
+  border-color: var(--accent);
+}
+
+/* ====== Page Container ====== */
+#content {
+  max-width: 1100px;
+  margin: 28px auto 80px;
+  padding: 0 16px;
+}
+
+/* ====== Home ====== */
+#home {
+  display: grid;
+  gap: 20px;
+  text-align: center;
+}
+
+#home h1 {
+  margin: 10px 0 0;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15;
+  letter-spacing: .2px;
+}
+
+#home p {
+  margin: 0 auto;
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+#home img {
+  margin: 6px auto 0;
+  width: min(920px, 100%);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* CTA buttons on home */
+#home button {
+  border: 1px solid var(--border);
+  padding: 12px 8px; /* less horizontal padding for smaller width */
+  min-width: 80px;   /* optional: set a minimum width if needed */
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+
+#home button:first-of-type {
+  background: var(--accent);
+  color: white;
+  border-color: color-mix(in hsl, var(--accent), black 15%);
+  box-shadow: 0 8px 24px color-mix(in hsl, var(--accent), black 75%);
+}
+
+#home button:first-of-type:hover {
+  filter: brightness(1.04);
+}
+
+#home button + button {
+  background: transparent;
+  color: var(--fg);
+}
+
+#home button + button:hover {
+  background: color-mix(in hsl, var(--card), transparent 40%);
+  border-color: color-mix(in hsl, var(--fg), transparent 70%);
+}
+
+/* Buttons row layout */
+#home button, #home button + button {
+  display: inline-block;
+  margin: 6px 6px 0;
+}
+
+/* ====== Menu (cards grid) ====== */
+#menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.dish {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.dish:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.25);
+  border-color: color-mix(in hsl, var(--fg), transparent 75%);
+}
+
+.dish img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.dish h2 {
+  margin: 12px 0 6px;
+  font-size: 18px;
+}
+
+.dish p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ====== About ====== */
+#about-us {
+  display: grid;
+  gap: 16px;
+}
+
+#about-us > div img {
+  width: 100%;
+  aspect-ratio: 16/9;  /* or 4/3 */
+  height: auto;
+  object-fit: cover;   /* still crops */
+  object-position: 50% 30%; /* tweak focal point */
+}
+
+#about-us p { color: var(--muted); margin: 0; }
+
+#about-us > div {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+#about-us > div img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+@media (min-width: 720px) {
+  #about-us > div {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+/* ====== Helpers ====== */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+::selection { background: color-mix(in hsl, var(--accent), white 70%); color: #000; }
+
+/* Subtle entrance animation for swapped views */
+#content > * {
+  animation: fadeSlide .25s ease both;
+}
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
