@@ -1,9 +1,9 @@
 Javascript project using Webpack with:
--  ``npm install --save-dev webpack webpack-cli
--  ``npm install --save-dev html-webpack-plugin
--  ``npm install --save-dev style-loader css-loader
--  ``npm install --save-dev html-loader
--  ``npm install --save-dev webpack-dev-server
+-  webpack webpack-cli
+-  html-webpack-plugin
+-  style-loader css-loader
+-  html-loader
+-  webpack-dev-server
 
 RUN with: npx webpack serve
 
